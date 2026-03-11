@@ -5,7 +5,7 @@
 > Łącznie unikalnych URL: **1269**
 
 
-## 📄 Artykuły naukowe (14)
+## Artykuły naukowe (14)
 
 - <https://aclanthology.org/2025.emnlp-main.1347.pdf>  
   _źródło: `Badania Microsoft: prywatność w modelach LLM`_
@@ -36,7 +36,7 @@
 - <https://dl.acm.org/doi/pdf/10.1145/371920.372165>  
   _źródło: `Bezpieczne tie-breaki w re-rankingu - Borda i Cond`_
 
-## 🐙 Repozytoria GitHub (110)
+## Repozytoria GitHub (110)
 
 - <https://docs.github.com/actions/reference/openid-connect-reference>  
   _źródło: `Bezpieczny łącznik CI - CD z OIDC i rotacją sekret`, `Bezpieczny łącznik aktualizacji i podpisy artefakt`, `OIDC w CICD walidacja pola „aud” w tokenach`_
@@ -199,7 +199,7 @@
 - <https://github.com/notaryproject/specifications/blob/main/specs/trust-store-trust-policy.md>  
   _źródło: `Bezpieczny łącznik aktualizacji i podpisy artefakt`_
 
-## 📚 Dokumentacja (147)
+## Dokumentacja (147)
 
 - <https://release-1-9-0.kyverno.io/docs/writing-policies/verify-images/>  
   _źródło: `Bezpieczny łącznik aktualizacji i podpisy artefakt`, `Wzorce manifestów: od OCI do Frictionless`, `Łańcuch zaufania dla aktualizacji CLI i Dockera`_
@@ -362,7 +362,7 @@
 - <https://openpolicyagent.org/docs/policy-language>  
   _źródło: `Wzorce manifestów: od OCI do Frictionless`_
 
-## 🔗 Inne zasoby (998)
+## Inne zasoby (998)
 
 - <https://json-schema.org/draft/2020-12/schema>  
   _źródło: `Algorytm a dokładność obliczeń`, `Badania Microsoft: prywatność w modelach LLM`, `Bezpieczny connector: aktualizacje, Device Code i ` +10_
@@ -525,7 +525,7 @@
 - <https://www.freedesktop.org/software/systemd/man/systemd.exec.html>  
   _źródło: `Clawdbot: co się dzieje, gdy agent ma root`, `Trwała pamięć agentów i inwarianty życia`_
 
-## 📁 Katalogi źródłowe
+## Katalogi źródłowe
 
 Obszar `security` zawiera **53** katalogów:
 
