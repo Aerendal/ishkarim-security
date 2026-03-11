@@ -1,103 +1,102 @@
 # ishkarim-security
 
-> Bezpieczeństwo systemów AI: prompt injection, autoryzacja, OWASP-LLM, audyt.
+> **Bezpieczeństwo systemów AI — OWASP-LLM Top-10, prompt injection, autoryzacja agentów**
 
-## Instalacja
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)]()
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)]()
+[![License](https://img.shields.io/badge/license-MIT-green)]()
+[![CPU-only](https://img.shields.io/badge/CPU-only-orange)]()
+
+## Problem, który rozwiązujemy
+
+- Katalog zagrożeń
+- Wzorce ochrony przed prompt injection (input validation, output sanitization, sandboxing)
+- Autoryzacja CLI z Device Code Flow + JWKS — bez statycznych kluczy API
+
+Pełna lista → [docs/PROBLEMS.md](docs/PROBLEMS.md)
+
+## Szybki start
 
 ```bash
+# Instalacja
 pip install -e projects/ishkarim-security
+
+# Demo (10 sekund)
+python projects/ishkarim-security/demo.py
 ```
 
-Lub lokalnie z tego repozytorium:
-
-```bash
-cd projects/ishkarim-security
-pip install -e ".[dev]"
-```
-
-## Użycie
+## Użycie w kodzie
 
 ```python
 import ishkarim_security as m
 
-# Lista dostępnych modułów
-print(m.MODULES)
-
-# Wczytaj indeks wiedzy
+# Wszystkie 53 katalogi wiedzy obszaru 'security'
 docs = m.load_knowledge_index()
+print(f"{len(docs)} katalogów | obszar: {m.__area__}")
+
+# Narzędzia pomocnicze
+from ishkarim_security.utils import read_work_md, extract_tags, extract_python_blocks
 ```
 
-## Obszar tematyczny
+## Dla kogo
 
-Ten projekt agreguje wiedzę z **53 katalogów** obszaru `security`:
+- Audyt bezpieczeństwa systemu AI przed wdrożeniem produkcyjnym (security review checklist)
+- Checklist dla zespołu przed deploymentem agenta do klientów końcowych
+- Wdrożenie podpisanych modeli ML z weryfikowalnym software bill of materials (SBOM)
 
-- `Algorytm a dokładność obliczeń`
-- `Atak przez zaproszenia w Google Calendar`
-- `Badania Microsoft: prywatność w modelach LLM`
-- `Bezpieczna autoryzacja CLI dla AI‑łączników`
-- `Bezpieczna autoryzacja CLI w AI API`
-- `Bezpieczne aktualizacje i dostęp CLI`
-- `Bezpieczne kopie zapasowe dla bazy RAG w SQLite`
-- `Bezpieczne tie-breaki w re-rankingu - Borda i Condorcet`
-- … i 45 więcej (pełna lista w [MODULES.md](MODULES.md))
+## Dokumentacja
 
-## Przykładowe źródła
+| Plik | Zawartość |
+|------|-----------|
+| [docs/PROBLEMS.md](docs/PROBLEMS.md) | Co rozwiązuje / czego nie / znane problemy |
+| [docs/api.md](docs/api.md) | Dokumentacja API |
+| [docs/overview.md](docs/overview.md) | Przegląd obszaru |
+| [docs/sources.md](docs/sources.md) | Źródłowe katalogi wiedzy |
+| [MODULES.md](MODULES.md) | Pełny indeks 53 katalogów |
 
-### Algorytm a dokładność obliczeń
+## Testy i benchmarki
 
-# WORK: Algorytm a dokładność obliczeń
-## 0-Metadane
-- Katalog: Algorytm a dokładność obliczeń
-- Pliki: 110 (bez placeholderów)
-- Tagi: algorytmy, precyzja-obliczeniowa, kwantyzacja, PDCA, NLU, DSL, sandbox, R&D, Python, laptop-first
+```bash
+# Testy jednostkowe
+pytest tests/test_security.py -v
 
-### Atak przez zaproszenia w Google Calendar
+# Testy domenowe (z prawdziwymi danymi)
+pytest tests/test_security_domain.py -v
 
-# WORK: Atak przez zaproszenia w Google Calendar
-## 0-Metadane
-- Katalog: Atak przez zaproszenia w Google Calendar
-- Pliki: 15 (bez placeholderów)
-- Tagi: bezpieczeństwo AI, prompt injection, Google Calendar, Gemini, LLM security, OWASP LLM01, agent security, DLP
-
-### Badania Microsoft: prywatność w modelach LLM
-
-# WORK: Badania Microsoft: prywatność w modelach LLM
-## 0-Metadane
-- Katalog: Badania Microsoft: prywatność w modelach LLM
-- Pliki: 10 (bez placeholderów)
-- Tagi: prywatność, LLM, contextual-integrity, microsoft-research, PrivacyChecker, CI-CoT, CI-RL, agenci-AI, PII, taint-tracking
-
+# Benchmarki wydajnościowe
+python benchmarks/bench_security.py --quick
+```
 
 ## Struktura projektu
 
 ```
 ishkarim-security/
-├── pyproject.toml        # installable package
+├── demo.py                    ← uruchom mnie
+├── pyproject.toml
 ├── README.md
-├── MODULES.md            # pełny indeks 53 katalogów-źródeł
-├── src/
-│   └── ishkarim_security/
-│       ├── __init__.py   # publiczne API
-│       ├── utils.py      # wspólne narzędzia
-│       └── *.py          # kod wyekstrahowany z WORK.md
+├── MODULES.md                 ← 53 katalogów-źródeł
+├── docs/
+│   ├── PROBLEMS.md            ← co rozwiązuje / czego nie
+│   ├── api.md                 ← dokumentacja API
+│   ├── overview.md
+│   └── sources.md
+├── src/ishkarim_security/
+│   ├── __init__.py            ← MODULES list + load_knowledge_index()
+│   ├── utils.py               ← read_work_md, extract_tags, extract_python_blocks
+│   └── snippets/              ← kod z WORK.md (referencyjny)
 ├── tests/
-│   ├── __init__.py
-│   └── test_security.py
-└── docs/
-    ├── overview.md
-    └── sources.md
+│   ├── test_security.py         ← testy jednostkowe
+│   └── test_security_domain.py  ← testy domenowe
+└── benchmarks/
+    └── bench_security.py        ← benchmarki wydajnościowe
 ```
 
-## Testy
+## Ograniczenia
 
-```bash
-pytest projects/ishkarim-security/tests/ -v
-```
-
-## Źródło danych
-
-Katalogi źródłowe znajdują się w katalogu głównym repozytorium Ishkarim.
-Każdy katalog zawiera `WORK.md` (notatki badawcze) i `TAGS.md` (metadane).
+> ⚠️ To projekt **referencyjny** — wzorce i wiedza, nie gotowa biblioteka produkcyjna.
+> Przed wdrożeniem produkcyjnym przeczytaj [docs/PROBLEMS.md](docs/PROBLEMS.md).
 
 ---
-*Wygenerowano automatycznie przez `scripts/build_projects.py`*
+
+*Część ekosystemu [Ishkarim](../../README.md) — 53 katalogów wiedzy obszaru `security`*
+*Wygenerowano: 2026-03-11 | `scripts/build_projects.py` + `scripts/enrich_projects.py`*
